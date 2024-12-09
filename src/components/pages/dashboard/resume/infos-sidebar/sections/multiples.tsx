@@ -98,7 +98,7 @@ export const MultiplesSections = () => {
 
       {sectionToAdd && (
         <ManageMultipleItemDialog
-        //   initialData={initialData}
+          initialData={initialData}
           data={sectionToAdd}
           open={!!sectionToAdd}
           setOpen={(value) => {

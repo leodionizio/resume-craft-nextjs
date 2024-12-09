@@ -19,7 +19,7 @@ export const BasicInfoSection = () => {
           <SwitchField name="content.image.visible" className="mb-2" />
         </div>
 
-        <InputField label="Nome completo" name="content.infos.fullname" />
+        <InputField label="Nome completo" name="content.infos.fullName" />
         <InputField label="Cabeçalho" name="content.infos.headline" />
         <InputField label="E-mail" name="content.infos.email" />
         <InputField label="Site" name="content.infos.website" />

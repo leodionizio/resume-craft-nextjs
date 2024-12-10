@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/components/shared/theme.provider";
 import "../styles/globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
+import { setDefaultOptions } from "date-fns";
+import { ptBR } from "date-fns/locale";
+
 const fontTitle = Nunito({
   subsets: ["latin"],
   variable: "--font-text",
@@ -18,6 +21,8 @@ export const metadata: Metadata = {
   title: "Resume Craft",
   description: "App for craft resumes online",
 };
+
+setDefaultOptions({ locale: ptBR });
 
 export default function RootLayout({
   children,

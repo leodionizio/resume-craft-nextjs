@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "@/assets/logo.svg";
 import { Separator } from "@/components/ui/separator";
-import { AIGenerationDropdown } from "./ai-generation-dropdown";
+import { AIGenerationDropdown } from "./ai-generator-dropdown";
 import { BasicInfoSection } from "./sections/basic-info";
 import { SummarySection } from "./sections/summary";
 import { MultiplesSections } from "./sections/multiples";

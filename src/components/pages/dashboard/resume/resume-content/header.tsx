@@ -2,16 +2,16 @@ import { Button } from "@/components/ui/button";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Copy, Download, Home, Trash } from "lucide-react";
 import Link from "next/link";
-// import { DeleteResumeDialog } from "./delete-resume-dialog";
-// import { DuplicateResumeDialog } from "./duplicate-resume-dialog";
-// import { useResumeDownload } from "@/hooks/use-resume-download";
+import { DeleteResumeDialog } from "./delete-resume-dialog";
+import { DuplicateResumeDialog } from "./duplicate-resume-dialog";
+import { useResumeDownload } from "@/hooks/use-resume-download";
 
 type NavigationHeaderProps = {
   title: string;
 };
 
 export const NavigationHeader = ({ title }: NavigationHeaderProps) => {
-  //   const { handleDownloadResume, isLoading } = useResumeDownload(title);
+    const { handleDownloadResume, isLoading } = useResumeDownload(title);
 
   return (
     <header className="absolute w-full left-0 top-0 z-10 p-2 bg-background border-b border-muted flex items-center justify-between gap-2">
@@ -34,7 +34,7 @@ export const NavigationHeader = ({ title }: NavigationHeaderProps) => {
       </div>
 
       <div className="flex gap-1">
-        {/* <DeleteResumeDialog> */}
+        <DeleteResumeDialog>
           <Tooltip content="Deletar Currículo">
             <Button
               variant="secondary"
@@ -44,9 +44,9 @@ export const NavigationHeader = ({ title }: NavigationHeaderProps) => {
               <Trash size={18} />
             </Button>
           </Tooltip>
-        {/* </DeleteResumeDialog> */}
+        </DeleteResumeDialog>
 
-        {/* <DuplicateResumeDialog> */}
+        <DuplicateResumeDialog>
           <Tooltip content="Duplicar Currículo">
             <Button
               variant="secondary"
@@ -56,15 +56,15 @@ export const NavigationHeader = ({ title }: NavigationHeaderProps) => {
               <Copy size={18} />
             </Button>
           </Tooltip>
-        {/* </DuplicateResumeDialog> */}
+        </DuplicateResumeDialog>
 
         <Tooltip content="Baixar PDF">
           <Button
             variant="secondary"
             className="w-8 h-8 bg-transparent"
             size="icon"
-            // onClick={handleDownloadResume}
-            // disabled={isLoading}
+            onClick={handleDownloadResume}
+            disabled={isLoading}
           >
             <Download size={18} />
           </Button>

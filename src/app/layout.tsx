@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Nunito, Nunito_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/shared/theme.provider";
 import "../styles/globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
 import { setDefaultOptions } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { ClientProviders } from "@/components/shared/client.providers";
 
 const fontTitle = Nunito({
   subsets: ["latin"],
@@ -38,15 +38,10 @@ export default function RootLayout({
           fontText.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ClientProviders>
           {children}
           <Toaster />
-        </ThemeProvider>
+        </ClientProviders>
       </body>
     </html>
   );

@@ -17,6 +17,7 @@ export default async function DashboardResumePage({
 
   const initialData = resume.data as ResumeData;
   const session = await auth();
+
   return (
     <ResumePage
       title={resume.title}

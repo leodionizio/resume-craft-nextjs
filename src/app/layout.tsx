@@ -20,6 +20,9 @@ const fontText = Nunito_Sans({
 export const metadata: Metadata = {
   title: "Resume Craft",
   description: "App for craft resumes online",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 setDefaultOptions({ locale: ptBR });

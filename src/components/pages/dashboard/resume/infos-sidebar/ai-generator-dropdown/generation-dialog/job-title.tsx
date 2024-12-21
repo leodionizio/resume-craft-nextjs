@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { EditorField } from "@/components/ui/editor/field";
 import { InputField } from "@/components/ui/input/field";
-// import { queryKeys } from "@/constants/query-keys";
+import { queryKeys } from "@/constants/query-keys";
 import { ApiService } from "@/services/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, useFormContext } from "react-hook-form";
@@ -31,7 +31,7 @@ export const GenerateFromJobTitle = ({
   const { control, handleSubmit } = useForm<FormData>();
   const { setValue } = useFormContext<ResumeData>();
 
-//   const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   const { mutate: handleGenerate, isPending } = useMutation({
     mutationFn: ApiService.generateContentForJob,
@@ -44,7 +44,7 @@ export const GenerateFromJobTitle = ({
 
       toast.success("Conteúdo gerado com sucesso!");
 
-    //   queryClient.invalidateQueries({ queryKey: queryKeys.credits });
+      queryClient.invalidateQueries({ queryKey: queryKeys.credits });
 
       onClose();
     },

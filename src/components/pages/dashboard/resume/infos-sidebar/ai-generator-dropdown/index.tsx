@@ -22,7 +22,7 @@ import { ApiService } from "@/services/api";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BuyCreditsDialog } from "./buy-credits-dialog";
 import { queryKeys } from "@/constants/query-keys";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 
 export const AIGenerationDropdown = () => {
   const [generationMode, setGenerationMode] = useState<AIGenerationMode | null>(
@@ -31,18 +31,18 @@ export const AIGenerationDropdown = () => {
   const [showCreditsDialog, setShowCreditsDialog] = useState(false);
 
   const onAction = (mode: AIGenerationMode) => {
-    // if (!credits) {
-    //   toast.error(
-    //     "Você não tem créditos suficientes para realizar esta ação.",
-    //     {
-    //       action: {
-    //         label: "Comprar créditos",
-    //         onClick: () => setShowCreditsDialog(true),
-    //       },
-    //     }
-    //   );
-    //   return;
-    // }
+    if (!credits) {
+      toast.error(
+        "Você não tem créditos suficientes para realizar esta ação.",
+        {
+          action: {
+            label: "Comprar créditos",
+            onClick: () => setShowCreditsDialog(true),
+          },
+        }
+      );
+      return;
+    }
     setGenerationMode(mode);
   };
 

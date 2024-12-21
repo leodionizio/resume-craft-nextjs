@@ -1,26 +1,28 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, Suspense, useEffect } from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useTanstackQuery } from "@/lib/tanstack-query";
 import { Toaster } from "../ui/sonner";
 import { ThemeProvider } from "./theme.provider";
+import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 
-// const CreditsToast = () => {
-//   const searchParams = useSearchParams();
+const CreditsToast = () => {
+  const searchParams = useSearchParams();
 
-//   const successCheckoutParam = searchParams.get("success");
+  const successCheckoutParam = searchParams.get("success");
 
-//   useEffect(() => {
-//     if (successCheckoutParam === "true") {
-//       toast.success(
-//         "Compra realizada com sucesso! Seus créditos foram adicionados à sua conta."
-//       );
-//     }
-//   }, [successCheckoutParam]);
+  useEffect(() => {
+    if (successCheckoutParam === "true") {
+      toast.success(
+        "Compra realizada com sucesso! Seus créditos foram adicionados à sua conta."
+      );
+    }
+  }, [successCheckoutParam]);
 
-//   return null;
-// };
+  return null;
+};
 
 type ClientProvidersProps = {
   children: ReactNode;
@@ -37,9 +39,9 @@ export const ClientProviders = ({ children }: ClientProvidersProps) => {
         enableSystem
         disableTransitionOnChange
       >
-        {/* <Suspense>
+        <Suspense>
           <CreditsToast />
-        </Suspense> */}
+        </Suspense>
         {children}
         <Toaster />
       </ThemeProvider>

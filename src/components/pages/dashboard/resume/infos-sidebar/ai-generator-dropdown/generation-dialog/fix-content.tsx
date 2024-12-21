@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, useFormContext } from "react-hook-form";
 import { toast } from "sonner";
 import { mergician } from "mergician";
-// import { queryKeys } from "@/constants/query-keys";
+import { queryKeys } from "@/constants/query-keys";
 
 type GenerateToFixContentProps = {
   onClose: () => void;
@@ -16,7 +16,7 @@ export const GenerateToFixContent = ({
   const { handleSubmit } = useForm();
   const { getValues, setValue } = useFormContext<ResumeData>();
 
-//   const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   const { mutate: handleGenerate, isPending } = useMutation({
     mutationFn: ApiService.fixContent,
@@ -30,7 +30,7 @@ export const GenerateToFixContent = ({
 
       toast.success("Conteúdo gerado com sucesso!");
 
-    //   queryClient.invalidateQueries({ queryKey: queryKeys.credits });
+      queryClient.invalidateQueries({ queryKey: queryKeys.credits });
 
       onClose();
     },

@@ -105,7 +105,7 @@ export const ResumePage = ({ title, initialData, user }: ResumePageProps) => {
     } catch (error) {
       console.error(error);
     }
-  }, [methods]);
+  }, [methods, resumeId]);
 
   useEffect(() => {
     handleSaveUpdates();

@@ -4,14 +4,14 @@ import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 
 type DashboardResumePageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default async function DashboardResumePage({
   params,
 }: DashboardResumePageProps) {
-  const resumeId = params.id;
-  const resume = await getResumeById(resumeId);
+  const { id } = await params;
+  const resume = await getResumeById(id);
 
   if (!resume) return notFound();
 
